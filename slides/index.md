@@ -1,24 +1,22 @@
-- title : FsReveal
-- description : Introduction to FsReveal
-- author : Karlkim Suwanmongkol
+- title : language-ext
+- description : Introduction to lanaguage-ext
+- author : Skylark
 - theme : night
 - transition : default
 
 ***
 
-### What is FsReveal?
+### language-ext
 
-- Generates [reveal.js](http://lab.hakim.se/reveal-js/#/) presentation from [markdown](http://daringfireball.net/projects/markdown/)
-- Utilizes [FSharp.Formatting](https://github.com/tpetricek/FSharp.Formatting) for markdown parsing
-- Get it from [http://fsprojects.github.io/FsReveal/](http://fsprojects.github.io/FsReveal/)
-
-![FsReveal](images/logo.png)
+- Pyramid of doom
+- Primitive Obsession
+- Validation
 
 ***
 
-### Reveal.js
+### Pyramid of Doom
 
-- A framework for easily creating beautiful presentations using HTML.
+![Pyramid of Doom](images/pyramid-of-doom.jpg)
 
 
 > **Atwood's Law**: any application that can be written in JavaScript, will eventually be written in JavaScript.
