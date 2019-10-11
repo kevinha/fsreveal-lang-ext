@@ -86,15 +86,36 @@
 
 ***
 
-### The Reality of a Developer's Life 
+### Primitive Obsession
 
-**When I show my boss that I've fixed a bug:**
-  
-![When I show my boss that I've fixed a bug](http://www.topito.com/wp-content/uploads/2013/01/code-07.gif)
-  
-**When your regular expression returns what you expect:**
-  
-![When your regular expression returns what you expect](http://www.topito.com/wp-content/uploads/2013/01/code-03.gif)
-  
-*from [The Reality of a Developer's Life - in GIFs, Of Course](http://server.dzone.com/articles/reality-developers-life-gifs)*
+Using primitives to model domain types
 
+    [lang=cs]
+    var order = _service.GetOrderForUser(userId, orderId);
+
+    ...
+
+    public Order GetOrderForUser(Guid orderId, Guid userId);
+
+---
+
+#### NewType
+
+    [lang=cs]
+    public class OrderId : NewType<OrderId, Guid>
+    {
+        public OrderId(string value) : base(value)
+        {
+        }
+    }
+
+    public class UserId : NewType<UserId, Guid>
+    {
+        public UserId(string value) : base(value)
+        {
+        }
+    }
+
+    public Order GetOrderForUser(OrderId orderId, UserId userId);
+
+NewTypes are equatable, comparable and 'hashable'
