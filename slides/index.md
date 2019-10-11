@@ -64,6 +64,26 @@
 
 ---
 
+#### Interpreting the Result
+
+    [lang=cs]
+    ...
+
+        return result.Match<IActionResult>(
+            Right: success => new OkObjectResult(success),
+            Left: ToResult);
+    }
+
+    private IActionResult ToResult(Error error)
+    {
+        return error.Match<IActionResult>(
+            notfound => new NotFoundResult(),
+            forbidden => new ForbidResult(),
+            invalid => new BadRequestObjectResult(invalid),
+            general => new InternalServerErrorResult());
+    }
+
+
 ***
 
 ### The Reality of a Developer's Life 
