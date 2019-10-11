@@ -11,6 +11,14 @@
 - Pyramid of doom
 - Primitive Obsession
 - Validation
+- Other features
+
+' composability
+' make illegal states unrepresentable
+' dev we know, have taken all this with them to other jobs
+' while should apple devs have all the fun
+' fundamental design patters, universal abstractions
+' my "trafalgar"
 
 ***
 
@@ -61,6 +69,8 @@
             && userClaims.ProfileRights.Write == false) return Errors.PermissionDenied;
         return unit;
     }
+
+Honest functions with a common return type promote composability
 
 ---
 
@@ -119,3 +129,40 @@ Using primitives to model domain types
     public Order GetOrderForUser(OrderId orderId, UserId userId);
 
 NewTypes are equatable, comparable and 'hashable'
+
+***
+
+### Validation
+
+    [lang-cs]
+    Validation<MyErrorType, MySuccessType>
+
+    return model.IsNotNull().Bind(_ =>
+            model.HasValidId()
+             | model.HasEmailOrSupporterNumber()
+             | model.HasValidPrimaryEmail()
+             | model.HasValidContactEmail()
+             | model.HasValidParentEmail()
+             | model.HasValidCountryCode()
+             | model.HasValidDob()
+
+Composable
+
+---
+
+#### Applicable
+
+    [lang-cs]
+    return (
+            Latitude.Validate("1.23", "start lat"),
+            Longitude.Validate(null, "start lon"))
+        .Apply((lat, lon) =>
+            new GeoLocation(lat, lon));
+
+"Make illegal states unrepresentable"
+
+***
+
+### Other features
+
+- Records
