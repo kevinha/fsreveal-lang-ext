@@ -73,6 +73,8 @@
 
 Honest functions with a common return type promote composability
 
+`Either<Error, T>` is the common return type
+
 ' Isolate external dependencies to discrete functions, test honest functions independently
 
 ---
@@ -133,7 +135,7 @@ Using primitives to model domain types
 
 NewTypes are equatable, comparable and 'hashable'
 
----: NewType<OrderId, Guid>
+---
 
 #### Make invalid types unrepresentable
 
@@ -185,5 +187,16 @@ Make invalid states unrepresentable
 
 ### Other features
 
-- Options
-- Records
+#### Option
+
+    [lang-cs]
+    Either<Error, Option<Customer>>
+    
+#### Record
+Immutable classes, equatable, 'hashable' + With() methods for Value objects
+
+*** 
+
+### The End (is in sight)
+
+![C#9](images/c-sharp-9.jpg)
