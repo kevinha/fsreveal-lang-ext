@@ -28,9 +28,6 @@
 
 ![Pyramid of Doom](images/pyramid-of-doom.jpg)
 
-
-> **Atwood's Law**: any application that can be written in JavaScript, will eventually be written in JavaScript.
-
 ***
 
 ### Railway Oriented Programming
@@ -58,7 +55,8 @@
 
     return result;
 
-'LINQ Select, SelectMany
+' LINQ Select, SelectMany
+
 ---
 
 #### Workflow Method
@@ -117,7 +115,7 @@ Using primitives to model domain types
 #### NewType
 
     [lang=cs]
-    public class OrderId : NewType<OrderId, Guid>
+    public class OrderId 
     {
         public OrderId(string value) : base(value)
         {
@@ -135,12 +133,29 @@ Using primitives to model domain types
 
 NewTypes are equatable, comparable and 'hashable'
 
+---: NewType<OrderId, Guid>
+
+#### Make invalid types unrepresentable
+
+    [lang=cs]
+    public class PrimitiveValidation : NewType<PrimitiveValidation, int>
+    {
+        private PrimitiveValidation(int val) : base(val)
+        {
+        }
+        
+        public static Validation<Error, PrimitiveValidation> Create(int val)
+        {
+            ...
+        }            
+    }
+
 ***
 
 ### Validation
 
     [lang-cs]
-    Validation<MyErrorType, MySuccessType>
+    Validation<ErrorType, SuccessType>
 
     return model.IsNotNull().Bind(_ =>
             model.HasValidId()
@@ -164,10 +179,11 @@ Composable
         .Apply((lat, lon) =>
             new GeoLocation(lat, lon));
 
-"Make illegal states unrepresentable"
+Make invalid states unrepresentable
 
 ***
 
 ### Other features
 
+- Options
 - Records
