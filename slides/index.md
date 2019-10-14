@@ -19,6 +19,8 @@
 ' while should apple devs have all the fun
 ' fundamental design patters, universal abstractions
 ' my "trafalgar"
+' more upfront work, less fixing
+' single error type per subsystem
 
 ***
 
@@ -56,6 +58,7 @@
 
     return result;
 
+'LINQ Select, SelectMany
 ---
 
 #### Workflow Method
@@ -71,6 +74,8 @@
     }
 
 Honest functions with a common return type promote composability
+
+' Isolate external dependencies to discrete functions, test honest functions independently
 
 ---
 
